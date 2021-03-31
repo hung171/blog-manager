@@ -16,6 +16,5 @@ export class AgentDetailComponent implements OnInit {
               private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-
   }
 }

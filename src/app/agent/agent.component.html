@@ -1,4 +1,5 @@
 <input class="form-control mr-sm-2" type="search" placeholder="Agent Name" aria-label="Search" [(ngModel)]="searchValue" (input)="search()">
+
 <table class="table table-striped">
   <thead>
   <tr>
@@ -7,7 +8,9 @@
     <th scope="col">SEX</th>
     <th scope="col">ROLE</th>
     <th scope="col">AGE</th>
-    <th scope="col" class="text-right"><button type="button" class="btn btn-outline-secondary" routerLink="/agent/add">Add Agent</button></th>
+    <th scope="col" class="text-right">
+      <button type="button" class="btn btn-outline-secondary" routerLink="/add">Add Agent</button>
+    </th>
   </tr>
   </thead>
   <tbody>
@@ -20,12 +23,11 @@
     <td class="text-right">
       <button type="button" class="btn btn-success" (click)="editAgent(item.id)">Edit</button>
       <button type="button" class="btn btn-danger" (click)="deleteAgent(item.id)">Delete</button>
-      <button type="button" class="btn btn-info" routerLink="/agent/detail" >Detail</button>
+      <button type="button" class="btn btn-info" routerLink="/detail" >Detail</button>
     </td>
   </tr>
   </tbody>
 </table>
-
 
 
 

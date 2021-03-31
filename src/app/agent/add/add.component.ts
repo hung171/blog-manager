@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild,} from '@angular/core';
 import {_fakeDataService} from "../../../services/_fake-data.service";
-import {ActivatedRoute, Router} from "@angular/router";
 import {DataAgent} from "../../data.model";
+import {AgentFormComponent} from "../agent-form/agent-form.component";
+import {Router} from "@angular/router";
+import {AgentComponent} from "../agent.component";
 
 @Component({
   selector: 'app-add',
@@ -10,9 +12,12 @@ import {DataAgent} from "../../data.model";
 })
 export class AddComponent implements OnInit {
   data : DataAgent [] = [];
+
+  @ViewChild(AgentFormComponent) agentFormComponent !: AgentFormComponent ;
+
   constructor(private fakeDataService : _fakeDataService,
-              private route : ActivatedRoute,
-              private router : Router) {}
+              private router: Router,) {
+  }
 
   ngOnInit(): void {
     this.fakeDataService.getDataTableFake({}).subscribe(rs => {
@@ -20,15 +25,16 @@ export class AddComponent implements OnInit {
     })
   }
 
-  add(name:any, type:any, sex:any, role:any, age:any, event:Event){
-    event.preventDefault();
-    let obj = new DataAgent();
-    obj.id = this.data[this.data.length - 1].id + 1;
-    obj.name = name.value;
-    obj.type = type.value;
-    obj.sex = sex.value;
-    obj.role = role.value;
-    obj.age = age.value;
-    this.data.push(obj);
+  addAgent(){
+    this.agentFormComponent.agentFormGroup.controls['id'].setValue(this.data.length + 1);
+    this.fakeDataService.addData(this.agentFormComponent.agentFormGroup.value).subscribe(rs => {
+      console.log(this.data);
+    })
+    this.router.navigate(['/agent']);
+  }
+
+  back(){
+    this.router.navigate(['/agent']);
   }
 }
+

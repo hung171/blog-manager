@@ -1,30 +1,12 @@
-<form>
-  <div class="form-group">
-    <label>Name</label>
-    <input #name class="form-control" placeholder="">
+<app-agent-form></app-agent-form>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary" (click)="addAgent()" >Add</button>
+      <button type="submit" class="btn badge-danger" (click)="back()">Back</button>
+    </div>
   </div>
-  <div class="form-group">
-    <label>Type</label>
-    <select #type class="form-control">
-      <option selected>Choose...</option>
-      <option>agent</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label>Sex</label>
-    <select #sex class="form-control">
-      <option selected>Choose...</option>
-      <option>Male</option>
-      <option>Famale</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label>Role</label>
-    <input #role class="form-control" placeholder="">
-  </div>
-  <div class="form-group">
-    <label>Age</label>
-    <input #age class="form-control" placeholder="">
-  </div>
-  <button  type="submit" class ="btn btn-primary" (click)="add(name,type,sex,role,age,$event)" routerLink="/agent">Add</button>
-</form>
+</div>
+
+
+
