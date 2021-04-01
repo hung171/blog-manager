@@ -6,7 +6,7 @@ import {AgentDetailComponent} from "./agent-detail/agent-detail.component";
 import {AgentFormComponent} from "./agent-form/agent-form.component";
 import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {agentRoutes} from "./agent.routes";
+import {AgentRoutingModule, agentRoutingModule} from "./agent-routing.module";
 
 
 
@@ -16,7 +16,7 @@ import {agentRoutes} from "./agent.routes";
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(agentRoutes),
+    AgentRoutingModule,
   ]
 })
 export class AgentModule { }

@@ -14,7 +14,7 @@ export class AgentComponent implements OnInit {
 
   constructor(private fakeDataService: _fakeDataService,
               private  route: ActivatedRoute,
-              private router: Router,) {
+              private router: Router) {
   }
 
   ngOnInit(): void {

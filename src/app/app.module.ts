@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { AgentComponent } from './agent/agent.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AgentModule} from "./agent/agent.module";
+import {CategoryModule} from "./category/category.module";
 
 
 
@@ -20,7 +21,8 @@ import {AgentModule} from "./agent/agent.module";
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    AgentModule
+    AgentModule,
+    CategoryModule
   ],
   providers: [],
   bootstrap: [AppComponent]

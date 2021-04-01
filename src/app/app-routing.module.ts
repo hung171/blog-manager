@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AgentComponent} from "./agent/agent.component";
-import {HeaderComponent} from "./header/header.component";
 
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./header/header.module').then(rs => rs.HeaderModule),
+    loadChildren: () => import('./agent/agent.module').then(m => m.AgentModule),
   },
   {
-    path:'agent',
-    component: AgentComponent,
+    path:'',
     children: [
       {
-        path: '',
+        path: 'agent',
         loadChildren: () => import('./agent/agent.module').then(m => m.AgentModule),
+      },
+      {
+        path: 'guide',
+        loadChildren: () => import('./category/category.module').then(m => m.CategoryModule),
       },
     ]
   },

@@ -10,8 +10,8 @@ import {DataAgent} from "../../data.model";
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent implements OnInit , AfterViewInit {
-  data : DataAgent = {};
+export class EditComponent implements OnInit, AfterViewInit {
+  data: DataAgent = {};
   msg: any;
 
   @ViewChild(AgentFormComponent) agentFormComponent !: AgentFormComponent;
@@ -33,17 +33,21 @@ export class EditComponent implements OnInit , AfterViewInit {
     }
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.agentFormComponent.setFormData(this.data);
   }
 
   editAgent() {
-    this.agentFormComponent.agentFormGroup.controls['id'].setValue(this.msg);
-    this.fakeDataService.updateData(this.msg, this.agentFormComponent.agentFormGroup.value).subscribe(rs => {
-    })
-    this.router.navigate(['/agent']);
+    let data = this.agentFormComponent.getData();
+
+    if (data) {
+      this.fakeDataService.updateData(this.msg, data).subscribe(rs => {
+      })
+      this.router.navigate(['/agent']);
+    }
   }
-  back(){
+
+  back() {
     this.router.navigate(['/agent']);
   }
 }

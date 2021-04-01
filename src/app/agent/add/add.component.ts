@@ -3,7 +3,6 @@ import {_fakeDataService} from "../../../services/_fake-data.service";
 import {DataAgent} from "../../data.model";
 import {AgentFormComponent} from "../agent-form/agent-form.component";
 import {Router} from "@angular/router";
-import {AgentComponent} from "../agent.component";
 
 @Component({
   selector: 'app-add',
@@ -26,11 +25,14 @@ export class AddComponent implements OnInit {
   }
 
   addAgent(){
-    this.agentFormComponent.agentFormGroup.controls['id'].setValue(this.data.length + 1);
-    this.fakeDataService.addData(this.agentFormComponent.agentFormGroup.value).subscribe(rs => {
-      console.log(this.data);
-    })
-    this.router.navigate(['/agent']);
+    let data = this.agentFormComponent.getData();
+
+    if(data){
+      this.fakeDataService.addData(data).subscribe(rs => {
+        console.log(this.data);
+      })
+      this.router.navigate(['/agent']);
+    }
   }
 
   back(){

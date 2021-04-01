@@ -90,6 +90,7 @@ export class _fakeDataService {
     dataRes.result = this.data;
     dataRes.count = this.data.length;
 
+    obj.id = this.data.length + 1;
 
     dataRes.result.push(obj);
     return of(dataRes)
@@ -101,20 +102,22 @@ export class _fakeDataService {
     dataRes.result = this.data;
     dataRes.count = this.data.length;
 
-    dataRes.result[index-1] = obj;
+    dataRes.result[index - 1] = obj;
 
-    return of( dataRes)
+    return of(dataRes)
   }
 
-  public searchData(keyword:any){
+  public searchData(keyword: any) {
 
     let dataRes: api = {count: 0, error: false};
     dataRes.result = this.data;
     dataRes.count = this.data.length;
 
-    dataRes.result = dataRes.result.filter((res: any ) => { return (res.name.toLocaleLowerCase().match(keyword))})
+    dataRes.result = dataRes.result.filter((res: any) => {
+      return (res.name.toLocaleLowerCase().match(keyword))
+    })
 
-    return of( dataRes)
+    return of(dataRes)
   }
 }
 

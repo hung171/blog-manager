@@ -23,7 +23,7 @@
     <td class="text-right">
       <button type="button" class="btn btn-success" (click)="editAgent(item.id)">Edit</button>
       <button type="button" class="btn btn-danger" (click)="deleteAgent(item.id)">Delete</button>
-      <button type="button" class="btn btn-info" routerLink="/detail" >Detail</button>
+      <button type="button" class="btn btn-info" routerLink="/detail/{{item.id}}" >Detail</button>
     </td>
   </tr>
   </tbody>
