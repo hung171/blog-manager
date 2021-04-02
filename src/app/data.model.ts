@@ -13,6 +13,7 @@ export class DataAgent {
     this.role = "";
     this.sex = "";
     this.age = 0;
+
   }
 }
 

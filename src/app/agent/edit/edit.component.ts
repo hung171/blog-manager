@@ -13,6 +13,7 @@ import {DataAgent} from "../../data.model";
 export class EditComponent implements OnInit, AfterViewInit {
   data: DataAgent = {};
   msg: any;
+  submitted = false;
 
   @ViewChild(AgentFormComponent) agentFormComponent !: AgentFormComponent;
 
@@ -34,7 +35,16 @@ export class EditComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.agentFormComponent.setFormData(this.data);
+    setTimeout(() => {
+      this.fakeDataService.getDataTableFake({id: this.msg}).subscribe(rs => {
+        this.agentFormComponent.setFormData(rs.result);
+      });
+    }, 0);
+
+    this.agentFormComponent?.agentFormGroup.valueChanges.subscribe(x => {
+      if (this.agentFormComponent?.getValid() == false) this.submitted = false;
+      else this.submitted = true;
+    })
   }
 
   editAgent() {

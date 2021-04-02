@@ -114,7 +114,9 @@ export class _fakeDataService {
     dataRes.count = this.data.length;
 
     dataRes.result = dataRes.result.filter((res: any) => {
-      return (res.name.toLocaleLowerCase().match(keyword))
+      return (res.name.toLocaleLowerCase().match(keyword) ||
+        res.role.toLocaleLowerCase().match(keyword) ||
+        res.sex.toLocaleLowerCase().match(keyword))
     })
 
     return of(dataRes)

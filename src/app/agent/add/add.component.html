@@ -1,12 +1,11 @@
-<app-agent-form></app-agent-form>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <button type="submit" class="btn btn-primary" (click)="addAgent()" >Add</button>
-      <button type="submit" class="btn badge-danger" (click)="back()">Back</button>
+<form (ngSubmit)="addAgent()">
+  <app-agent-form></app-agent-form>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary" [disabled]="!submitted" >Add</button>
+        <button class="btn badge-danger" (click)="back()">Back</button>
+      </div>
     </div>
   </div>
-</div>
-
-
-
+</form>

@@ -4,26 +4,33 @@
       <div [formGroup]="agentFormGroup" novalidate>
         <div class="form-group">
           <label>Name</label>
-          <input class="form-control" formControlName="name" >
-        </div>
-        <div class="form-group">
-          <label>Type</label>
-          <select class="form-control" formControlName="type">
-            <option selected>agent</option>
-          </select>
+          <input class="form-control" formControlName="name">
+          <small *ngIf="agentFormGroup.get('name')?.hasError('required') " class="text-info">name can not be blank</small>
+
         </div>
         <div class="form-group" >
-          <input  type="radio" formControlName="sex" value="female">female
+          <label>Type</label>
+          <select class="form-control" formControlName="type">
+            <option *ngFor="let item of type" [ngValue]="item">{{item}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="radio" formControlName="sex" value="female">female
           <br>
-          <input  type="radio" formControlName="sex" value="male">male
+          <input type="radio" formControlName="sex" value="male">male
+          <br />
+          <small *ngIf="agentFormGroup.get('sex')?.hasError('required')" class="text-info">Must select at least one</small>
         </div>
         <div class="form-group">
           <label>Role</label>
-          <input class="form-control" formControlName="role">
+          <select class="form-control" formControlName="role">
+            <option *ngFor="let item of role" [ngValue]="item">{{item}}</option>
+          </select>
         </div>
         <div class="form-group">
           <label>Age</label>
           <input class="form-control" formControlName="age">
+          <small *ngIf="agentFormGroup.get('age')?.hasError('required') " class="text-info">age can not be blank</small>
         </div>
       </div>
     </div>
